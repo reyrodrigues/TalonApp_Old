@@ -1,0 +1,11 @@
+{
+  "name": "example",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.5"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "breeze-client": "~1.5.3"
+  }
+}
