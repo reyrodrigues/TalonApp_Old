@@ -6,6 +6,9 @@
   },
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "breeze-client": "~1.5.3"
+    "breeze-client": "~1.5.3",
+    "ngstorage": "~0.3.0",
+    "moment": "~2.10.2",
+    "moment-timezone": "~0.3.1"
   }
 }

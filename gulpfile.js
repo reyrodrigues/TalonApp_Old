@@ -7,16 +7,18 @@ var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var concat = require('gulp-concat');
 
-var paths = {
-  sass: ['./scss/**/*.scss'],
-  less: ['./less/**/*.less']
-};
+gulp.task('default', ['sass', 'less', 'scripts']);
 
-gulp.task('default', ['sass', 'less']);
+gulp.task('scripts', function() {
+  return gulp.src('./src/js/**/*.js')
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('./www/js/'));
+});
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  gulp.src('./src/scss/ionic.app.scss')
     .pipe(sass({
       errLogToConsole: true
     }))
@@ -30,7 +32,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('less', function(done) {
-  gulp.src('./less/app.less')
+  gulp.src('./src/less/app.less')
     .pipe(less({
       errLogToConsole: true
     }))
@@ -44,8 +46,7 @@ gulp.task('less', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.less, ['less']);
+  gulp.watch('./src/**/*.*', ['default']);
 });
 
 gulp.task('install', ['git-check'], function() {
