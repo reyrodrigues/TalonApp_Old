@@ -9,6 +9,8 @@
     "breeze-client": "~1.5.3",
     "ngstorage": "~0.3.0",
     "moment": "~2.10.2",
-    "moment-timezone": "~0.3.1"
+    "moment-timezone": "~0.3.1",
+    "ngCordova": "~0.1.15-alpha",
+    "angular-gettext": "~2.0.5"
   }
 }

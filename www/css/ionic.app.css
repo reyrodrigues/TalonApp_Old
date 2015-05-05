@@ -7674,3 +7674,78 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.content {
+  background-color: #ffd442 !important; }
+
+.login-view {
+  background-color: #ffc810 !important; }
+  .login-view ion-content:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.6;
+    display: block;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px); }
+  .login-view .row {
+    height: 100%; }
+  .login-view [ng\:cloak], .login-view [ng-cloak], .login-view [data-ng-cloak], .login-view [x-ng-cloak], .login-view .ng-cloak, .login-view .x-ng-cloak {
+    display: none !important; }
+  .login-view .tab-content.ng-hide {
+    display: none !important; }
+  .login-view .tab-content.ng-hide-add.ng-hide-add-active, .login-view .tab-content.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all 0s ease;
+    transition: all 0s ease; }
+  .login-view .tabs .tab-item {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease; }
+  .login-view .tabs .tab-item.active, .login-view .tabs .tab-item.activated {
+    margin-top: 0;
+    margin-bottom: -2px;
+    border-width: 0px 0px 4px 0px !important;
+    border-color: #387ef5 !important;
+    border-style: solid; }
+  .login-view .login-container {
+    margin-bottom: 0px; }
+    .login-view .login-container .card-heading {
+      padding: 0px;
+      height: 49px; }
+      .login-view .login-container .card-heading .tabs {
+        top: 0px;
+        padding-top: 0;
+        background-position: bottom;
+        border-top-width: 0;
+        border-bottom-width: 1px; }
+      .login-view .login-container .card-heading .tab-item {
+        max-width: none; }
+    .login-view .login-container .bottom-content {
+      padding-top: 0px;
+      border: none; }
+      .login-view .login-container .bottom-content .button {
+        margin: 0px;
+        font-weight: bold; }
+  .login-view .alternative-actions {
+    margin: 0px 10px; }
+    .login-view .alternative-actions .button {
+      color: black;
+      padding: 0px;
+      font-size: 14px; }
+    .login-view .alternative-actions .sign-up {
+      float: right; }

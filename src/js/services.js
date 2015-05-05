@@ -3,7 +3,7 @@ angular.module('talon.services', [
   'breeze.angular'
 ])
 .constant('constants', {
-    serviceBase: 'http://6daececf.ngrok.com/Talon/', //'https://talon.rescue.org/',
+    serviceBase: 'https://6daececf.ngrok.com/Talon/', //'https://talon.rescue.org/',
     clientId: 'ngAuthApp'
 })
 .factory('multiTenantInterceptorService',
@@ -104,9 +104,11 @@ function ($http, $q, constants, $localStorage, $rootScope) {
       $http.get(constants.serviceBase + 'api/Account/Me')
       .then(function (response) {
           $rootScope.currentUser = response.data;
+          $localStorage.currentUser = response.data;
 
           $rootScope.organization = $rootScope.currentUser.Organization;
           $localStorage.organization = $rootScope.currentUser.Organization;
+
           var countries = $rootScope.currentUser.Countries.map(function (c) {
               return c.Country;
           });

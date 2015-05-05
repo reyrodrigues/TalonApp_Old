@@ -1,25 +1,13 @@
 <ion-view view-title="Dashboard">
-    <ion-content class="padding">﻿
-        <ion-refresher
-                pulling-text="{{ 'Pull to refresh...' }}"
-                on-refresh="reload()">
-        </ion-refresher>
-        <button class="button button-block button-stable" ng-click="scan()">Scan Code</button>
-        <button class="button button-block button-stable" ng-click="scan()" disabled>Read Tag</button>
-        <div class="list list-inset">
-            <label class="item item-input item-stable">
-                <input type="text" placeholder="Code" ng-model="voucher.Code" readonly>
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="Id" ng-model="voucher.Id">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="PIN" ng-model="voucher.Pin">
-            </label>
-        </div>
-        <button class="button button-block button-stable" ng-click="msg = validateVoucher(voucher.Code, voucher.Id, voucher.Pin)">
-            Validate Code
-        </button>
-        <h1>{{ msg }} </h1>
+
+    <ion-nav-bar class="bar-dark">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding content">﻿
+    {{ device }}
+
+        <br />
+        {{isOnline}}
     </ion-content>
 </ion-view>

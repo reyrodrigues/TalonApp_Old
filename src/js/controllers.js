@@ -1,23 +1,31 @@
+/* global cordova, bluetoothSerial  */
+
 angular.module('talon.controllers', [])
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal) {
-    $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $state, $cordovaDevice, $cordovaNetwork, $ionicPlatform) {
     $rootScope.$on('app:signedOut', function() {
-        $scope.modal.show();
+        $state.go('login');
     });
     $rootScope.$on('app:authenticated', function() {
-        $scope.modal.hide();
     });
 
+    $ionicPlatform.ready(function(){
+        $rootScope.device = $cordovaDevice.getDevice();
+        $rootScope.isOnline = $cordovaNetwork.isOnline();
+
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+            $rootScope.isOnline  = true;
+        })
+
+        $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+            $rootScope.isOnline  = false;
+        })
+    });
 
 })
-.controller('DashCtrl', function($rootScope, $localStorage, $scope, $q, DashboardService) {
+.controller('DashCtrl', function($rootScope, $localStorage, $scope, $q, $ionicPlatform, DashboardService) {
     $scope.voucher = {
     };
+
     $scope.reload = function() {
         return DashboardService.restore().then(function(response){
            $localStorage.Vouchers = ($localStorage.Vouchers||[]).concat(response.data);
@@ -60,7 +68,6 @@ angular.module('talon.controllers', [])
         }
     };
 
-
     $scope.validateVoucher = function(code, id, pin){
         var decrypted = findVoucher(code, id).map(function(m) {
             return decryptRecord(m, id, pin);
@@ -89,20 +96,11 @@ angular.module('talon.controllers', [])
     $rootScope.$on('app:authenticated', function(){ $scope.reload(); });
     $rootScope.$on('app:dataCleared', function(){ $scope.Vouchers = []; });
 
-    $q.when($scope.reload());
-})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
+    $ionicPlatform.ready(function(){
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+    });
 })
-
 .controller('AccountCtrl', function($scope, $rootScope, $localStorage) {
   $scope.reset = function() {
     delete $localStorage.BeginPeriod;
@@ -118,8 +116,7 @@ angular.module('talon.controllers', [])
     enableFriends: true
   };
 })
-
-.controller('LoginCtrl', function($scope, $http, $state, authService, $localStorage, $rootScope) {
+.controller('LoginCtrl', function($scope, $http, $state, authService, $localStorage, $rootScope, $cordovaProgress) {
     $scope.loading = false;
     $scope.user = {};
     $scope.authError = null;
@@ -127,18 +124,14 @@ angular.module('talon.controllers', [])
     if($localStorage.authorizationData) {
         $scope.loading = true;
 
-        authService.loadUserData().then(function () {
-            $rootScope.$emit('app:authenticated');
-            $state.go('tab.dash');
-        })
-        .catch(function(){
-            $scope.loading = false;
-        });
+        $rootScope.$emit('app:authenticated');
+        $state.go('tab.dash');
     }
 
     $scope.login = function () {
         $scope.authError = null;
         $scope.loading = true;
+        $cordovaProgress.showSimple(trueioni);
 
         authService.login({
             'userName': $scope.user.userName,
@@ -146,11 +139,16 @@ angular.module('talon.controllers', [])
         }).then(function (response) {
             authService.loadUserData().then(function () {
                 $rootScope.$emit('app:authenticated');
+                        $cordovaProgress.hide();
+
                 $state.go('tab.dash');
             });
         }, function (error) {
             $scope.loading = false;
             $scope.authError = error.error_description;
+                        $cordovaProgress.hide();
+
+            console.log(error);
         });
     };
 });

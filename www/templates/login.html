@@ -1,14 +1,40 @@
-<ion-modal-view>
-    <ion-content class="padding" ng-controller="LoginCtrl">
-            <h1 class="title text-center" translate>Talon</h1>
-        <div class="list list-inset">
-            <label class="item item-input">
-                <input type="text" placeholder="Username" ng-model="user.userName">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="Password" ng-model="user.password">
-            </label>
+<ion-view class="login-view" hide-nav-bar="true">
+    <ion-content scroll="false">
+        <div class="row">
+            <div class="col col-center">
+                <div class="card login-container">
+                    <form name="login_form" class="" novalidate ng-cloak>
+                        <div class="list">
+                            <label class="item item-input">
+                                <input type="text" placeholder="{{ 'User Name'|translate }}" name="userName"
+                                       ng-model="user.userName"
+                                       required>
+                            </label>
+                            <label class="item item-input">
+                                <input type="password" placeholder="{{ 'Password'|translate }}" name="password"
+                                       ng-model="user.password" required>
+                            </label>
+                        </div>
+                        <div class="item item-body bottom-content">
+                            <button type="submit" class="button button-positive button-block" ng-click="login()"
+                                    ng-disabled="(login_form.userName.$invalid || login_form.user_password.$invalid)"
+                                    translate>
+                                Log In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="alternative-actions">
+                    <button class="forgot-password button button-small button-clear button-light"
+                            ng-click="goToForgotPassword()" translate>
+                        Forgot Password?
+                    </button>
+                    <button class="sign-up button button-small button-clear button-light" ng-click="goToSignUp()"
+                            translate>
+                        Sign Up
+                    </button>
+                </div>
+            </div>
         </div>
-        <button class="button button-block button-stable" ng-click="login()">Login</button>
     </ion-content>
-</ion-modal-view>
+</ion-view>

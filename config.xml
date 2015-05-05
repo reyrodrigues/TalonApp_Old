@@ -8,15 +8,26 @@
       Ionic Framework Team
     </author>
   <content src="index.html"/>
-  <access origin="*"/>
+  <access origin="*" subdomains="true" />
+  <access origin="http://*.ngrok.com" subdomains="true" />
+  <access origin="https://*.ngrok.com" subdomains="true" />
+  <access origin="http://*.rescue.org" subdomains="true" />
+  <access origin="https://*.rescue.org" subdomains="true" />
+
+
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
+  <preference name="Orientation" value="portrait"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <feature name="Keyboard">
+    <param name="ios-package" value="CDVKeyboard" onload="true" />
   </feature>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
@@ -39,6 +50,9 @@
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+
     <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
     <icon src="resources/ios/icon/icon@2x.png" width="114" height="114"/>
     <icon src="resources/ios/icon/icon-40.png" width="40" height="40"/>
