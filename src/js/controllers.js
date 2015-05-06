@@ -100,7 +100,7 @@ angular.module('talon.controllers', [])
     $ionicPlatform.ready(function(){
         if(window.nfc) {
         nfc.addNdefListener(function(){
-            window.nfcMessage = arguments;
+            $scope.nfcMessage = arguments;
         });
         } else {
            $scope.nfcMessage = "NFC NOT FOUND!!!";
