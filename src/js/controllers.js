@@ -131,7 +131,7 @@ angular.module('talon.controllers', [])
     $scope.login = function () {
         $scope.authError = null;
         $scope.loading = true;
-        $cordovaProgress.showSimple(trueioni);
+        $cordovaProgress.showSimple(true);
 
         authService.login({
             'userName': $scope.user.userName,
