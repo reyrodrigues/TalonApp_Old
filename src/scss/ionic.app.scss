@@ -25,6 +25,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+font-face {
+ font-family: $ionicons-font-family;
+ src:url("#{$ionicons-font-path}/ionicons.eot");
+ src:url("#{$ionicons-font-path}/ionicons.eot") format("embedded-opentype"),
+  url("#{$ionicons-font-path}/ionicons.ttf") format("truetype"),
+  url("#{$ionicons-font-path}/ionicons.woff") format("woff"),
+  url("#{$ionicons-font-path}/ionicons.svg") format("svg");
+ font-weight: normal;
+ font-style: normal;
+}
+
+
 .content {
 	background-color: lighten($irc, 5%) !important;
 }
