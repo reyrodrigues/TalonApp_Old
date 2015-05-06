@@ -25,7 +25,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-network-information",
     "org.apache.cordova.statusbar",
-    "org.pbernasconi.progressindicator"
+    "org.pbernasconi.progressindicator",
+    "com.chariotsolutions.nfc.plugin"
   ],
   "cordovaPlatforms": [
     "android",
