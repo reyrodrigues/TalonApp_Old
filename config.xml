@@ -30,6 +30,9 @@
   <feature name="Keyboard">
     <param name="ios-package" value="CDVKeyboard" onload="true" />
   </feature>
+  <platform name="wp8">
+    <preference name="fullscreen" value="true"/>
+</platform>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
