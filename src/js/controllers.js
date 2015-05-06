@@ -97,15 +97,15 @@ angular.module('talon.controllers', [])
     $rootScope.$on('app:dataCleared', function(){ $scope.Vouchers = []; });
 
 
-    $ionicPlatform.ready(function(){
-        if(window.nfc) {
-        nfc.addNdefListener(function(){
-            $scope.nfcMessage = arguments;
+    $ionicPlatform.ready(function () {
+        nfc.addNdefListener(function (nfcEvent) {
+            console.log('Received');
+            //console.log(JSON.stringify(nfcEvent.tag, null, 4));
+        }, function () {
+            console.log("Listening for NDEF Tags.");
+        }, function (reason) {
+            alert("Error adding NFC Listener " + reason);
         });
-        } else {
-           $scope.nfcMessage = "NFC NOT FOUND!!!";
-        }
-
     });
 })
 .controller('AccountCtrl', function($scope, $rootScope, $localStorage) {
