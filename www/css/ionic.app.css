@@ -7675,6 +7675,13 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+font-face {
+  font-family: "Ionicons";
+  src: url("../lib/ionic/fonts/ionicons.eot");
+  src: url("../lib/ionic/fonts/ionicons.eot") format("embedded-opentype"), url("../lib/ionic/fonts/ionicons.ttf") format("truetype"), url("../lib/ionic/fonts/ionicons.woff") format("woff"), url("../lib/ionic/fonts/ionicons.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 .content {
   background-color: #ffd442 !important; }
 

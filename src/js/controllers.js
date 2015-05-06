@@ -116,7 +116,8 @@ angular.module('talon.controllers', [])
     enableFriends: true
   };
 })
-.controller('LoginCtrl', function($scope, $http, $state, authService, $localStorage, $rootScope, $cordovaProgress) {
+.controller('LoginCtrl',
+function($scope, $http, $state, authService, $localStorage, $rootScope, $cordovaProgress) {
     $scope.loading = false;
     $scope.user = {};
     $scope.authError = null;
@@ -139,14 +140,14 @@ angular.module('talon.controllers', [])
         }).then(function (response) {
             authService.loadUserData().then(function () {
                 $rootScope.$emit('app:authenticated');
-                        $cordovaProgress.hide();
+                $cordovaProgress.hide();
 
                 $state.go('tab.dash');
             });
         }, function (error) {
             $scope.loading = false;
             $scope.authError = error.error_description;
-                        $cordovaProgress.hide();
+            $cordovaProgress.hide();
 
             console.log(error);
         });
