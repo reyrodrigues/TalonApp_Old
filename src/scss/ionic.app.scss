@@ -16,19 +16,16 @@ $dark:                            #444 !default;
 */
 
 $irc: #ffce29;
-
+$positive: #1c2b36 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "../../www/lib/ionic/scss/ionic";
 
 
-.content {
-	background-color: lighten($irc, 5%) !important;
-}
 
 .login-view
 {
@@ -55,7 +52,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		-ms-filter: blur(1px);
 		filter: blur(1px);
 	}
-	background-color: darken($irc, 5%) !important;
+	background-color: lighten($positive, 15%) !important;
 
 	.row
 	{

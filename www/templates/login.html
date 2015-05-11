@@ -18,7 +18,12 @@
                         <div class="item item-body bottom-content">
                             <button type="submit" class="button button-positive button-block" ng-click="login()"
                                     ng-disabled="(login_form.userName.$invalid || login_form.user_password.$invalid)"
-                                    translate>
+                                    translate ng-if="!isAdmin">
+                                Log In
+                            </button>
+                            <button type="submit" class="button button-positive button-block" ng-click="loginAdmin()"
+                                    ng-disabled="(login_form.userName.$invalid || login_form.user_password.$invalid)"
+                                    translate ng-if="isAdmin">
                                 Log In
                             </button>
                         </div>
@@ -29,9 +34,10 @@
                             ng-click="goToForgotPassword()" translate>
                         Forgot Password?
                     </button>
-                    <button class="sign-up button button-small button-clear button-light" ng-click="goToSignUp()"
+                    <button class="sign-up button button-small button-clear button-light"
+                            ng-click="!isAdmin ? loginAsAdmin() : loginAsVendor()"
                             translate>
-                        Sign Up
+                       Log in as  {{ isAdmin ? 'Vendor' : 'Admin' }}
                     </button>
                 </div>
             </div>

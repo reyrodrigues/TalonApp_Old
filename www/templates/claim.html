@@ -1,0 +1,10 @@
+<ion-view view-title="Claim Vouchers">
+    <ion-content class="padding content">
+        <h1>{{nationalId}}</h1>
+        <ion-list>
+            <ion-item ng-repeat="code in codes">
+                <ion-checkbox ng-model="code.Checked">{{code.Value}}</ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

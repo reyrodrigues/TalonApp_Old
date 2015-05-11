@@ -1,14 +1,19 @@
 <ion-view view-title="Dashboard">
-
-    <ion-nav-bar class="bar-dark">
-        <ion-nav-back-button>
-        </ion-nav-back-button>
-    </ion-nav-bar>
     <ion-content class="padding content">﻿
-    {{ device }}
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="refreshDashboard()">
+        </ion-refresher>
+        {{ status }}
 
-        <br />
-        {{isOnline}}
-        {{tag}}
+        <button class="button button-dark button-block" ng-click="syncFromDevice()">
+            Sync from Device
+        </button>
+        <button class="button button-dark button-block" ng-click="syncFromServer()">
+            Sync from Server
+        </button>
+        <button class="button button-dark button-block" ng-click="refillCard()">Refill Card</button>
+        <a class="button button-dark button-block" href="" ui-sref="claim">Process Voucher</a>
+        <a class="button button-dark button-block" href="" ui-sref="provision" ng-if="isAdmin">Provision</a>
     </ion-content>
 </ion-view>
